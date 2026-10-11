@@ -54,6 +54,3 @@ else
 fi
 
 echo ">>> diy-part1.sh 完成"
-fi
-
-echo ">>> diy-part1.sh 完成"
