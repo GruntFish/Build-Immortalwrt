@@ -53,4 +53,19 @@ else
     echo ">>> 警告: 未找到 $TC_FILE"
 fi
 
+# ============================================================
+# 3. dnsmasq 过滤 IPv6 DNS 解析（不返回 AAAA 记录）
+#    路径: package/network/services/dnsmasq/files/dhcp.conf
+#    动作: 在 config dnsmasq 下加 option filter_aaaa 1
+# ============================================================
+if [ -f "$DNSMASQ_CONF" ]; then
+    echo ">>> 修改 $DNSMASQ_CONF: 添加 filter_aaaa"
+    sed -i '/^\s*option filter_aaaa\s/d' "$DNSMASQ_CONF"
+    sed -i '/^config dnsmasq$/a\\toption filter_aaaa\t1' "$DNSMASQ_CONF"
+    echo ">>> 修改后关键行："
+    grep -E "noresolv|resolvfile|filter_aaaa" "$DNSMASQ_CONF" || echo "（未找到关键行）"
+else
+    echo ">>> 警告: 未找到 $DNSMASQ_CONF"
+fi
+
 echo ">>> diy-part1.sh 完成"
