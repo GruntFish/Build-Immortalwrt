@@ -15,7 +15,7 @@ rm -rf feeds/packages/net/adguardhome
 rm -rf feeds/luci/applications/luci-app-passwall
 
 rm -rf feeds/packages/lang/golang
-git clone -b 26.x --single-branch --depth 1 https://github.com/GruntFish/packages_lang_golang feeds/packages/lang/golang
+git clone -b 27.x --single-branch --depth 1 https://github.com/GruntFish/packages_lang_golang feeds/packages/lang/golang
 
 
 if [ -n "$ROOT_PASSWORD" ]; then
